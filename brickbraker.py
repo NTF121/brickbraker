@@ -12,13 +12,17 @@ class bricks(object):
 	br = None
 	bwith = 100
 	def brick(bx,by,bwith,bheight):
+		if controls.mx < 0:
+			controls.mx = 0
+		if controls.mx+bricks.bwith > resolution:
+			controls.mx = resolution-bricks.bwith
 		bricks.br = pygame.draw.rect(win, (0,0,200), (bx,by,bwith,bheight))
 		return bricks.br
 	brs = []
 	brs_rm = set()
 	def brickss():
 		iter_cur = 0
-		for y in range(1,5):
+		for y in range(1,7):
 			for x in range(1,19):
 				if not iter_cur in bricks.brs_rm:
 					bricks.brs.append(pygame.draw.rect(win, (187, 191, 61), (x*32,y*30,30,20)))
